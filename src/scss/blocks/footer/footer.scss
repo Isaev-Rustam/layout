@@ -1,0 +1,38 @@
+.footer {
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding-top: 16px;
+  }
+
+  &__text {
+    font-weight: 500;
+    line-height: 16px;
+    text-align: center;
+    color:$title;
+    opacity: 0.72;
+    margin-bottom: 16px;
+  }
+
+  @media (min-width: 500px) {
+    &__content {
+      flex-direction: row;
+    }
+    &__text {
+      width: 33.33%;
+    }
+    &__text:first-child {
+      text-align: left;
+    }
+
+    &__text:last-child {
+      text-align: right;
+    }
+  }
+
+  @media (min-width: 768px) {
+
+  }
+}

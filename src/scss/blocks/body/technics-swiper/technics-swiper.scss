@@ -1,0 +1,68 @@
+.technics-swiper{
+  &:before,
+  &:after {
+    top: 0px;
+    z-index: 10;
+    height: 166px;
+  }
+  &:after {
+    right: 0;
+  }
+  &:before {
+    left: 0;
+  }
+
+  &__item-link {
+    min-width: 240px;
+    height: 160px;
+    border: 1px solid #EAEAEA;
+    position: relative;
+    padding-top: 16px;
+  }
+  &__item-link:after {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  &__title{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: $text;
+    margin-left: 16px;
+  }
+
+
+  @media (min-width: 768px) {
+    &:before,
+    &:after {
+      display: none;
+    }
+
+    &__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 8px;
+      overflow: hidden;
+      height: 160px;
+    }
+    &__item {
+      margin: 0 auto;
+    }
+
+    &__wrapper--show {
+      height:690px;
+    }
+    &__btn {
+      position: absolute;
+      bottom: 34px;
+      display: block;
+    }
+  }
+  @media (min-width: 1120px) {
+    &__wrapper {
+
+    }
+  }
+}

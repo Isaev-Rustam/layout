@@ -1,0 +1,30 @@
+@import "~normalize.css";
+@import "variables.scss";
+@import "global.scss";
+@import "fonts.scss";
+
+@import "blocks/sidebar/sidebar";
+@import "blocks/header/header";
+@import "blocks/info/info";
+@import "blocks/main/main";
+
+@import '../../node_modules/swiper/swiper.scss';
+@import '../../node_modules/swiper/modules/pagination/pagination.scss';
+
+
+
+
+
+
+@import "blocks/body/body";
+@import "blocks/body/swiper/swiper";
+@import "blocks/body/br-swiper/br-swiper";
+@import "blocks/body/technics-swiper/technics-swiper";
+@import "blocks/body/services-swiper/services-swiper";
+
+
+@import "blocks/footer/footer";
+
+@import "blocks/form/form";
+@import "blocks/feedBack/feedBack";
+@import "blocks/modal-call/modal-call";

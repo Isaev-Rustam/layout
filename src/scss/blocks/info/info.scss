@@ -1,0 +1,148 @@
+.info {
+  &__title {
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  &__title::before {
+    content: "";
+  }
+
+  &__service {
+    padding-top: 24px;
+  }
+
+  &__service-list {
+  }
+
+  &__service-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__service-img {
+    vertical-align: middle;
+  }
+
+  &__service-btn + &__service-btn {
+    margin-left: 32px;
+  }
+
+  &__service-text {
+    line-height: 24px;
+    font-size: 16px;
+    text-align: right;
+    letter-spacing: -0.2px;
+    color: $text;
+    font-weight: 500;
+  }
+
+  &__service-img {
+    display: inline-block;
+    margin-left: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    &__title {
+      margin-bottom: 32px;
+    }
+
+  }
+  @media (min-width: 1120px) {
+
+    &__service {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 42px;
+    }
+
+    &__service-list[hidden] {
+      display: block;
+    }
+  }
+}
+
+.menu {
+  position: relative;
+  padding-left: 16px;
+
+  &:before,
+  &:after {
+    top: 0;
+    bottom: 0;
+  }
+
+  &:before {
+    left: -16px;
+  }
+
+  &:after {
+    right: -16px;
+  }
+
+  &__list {
+    display: flex;
+    overflow-x: scroll;
+  }
+
+  &__list-item {
+  }
+
+  &__list-item[hidden]:nth-of-type(3) {
+    display: block;
+  }
+
+  &__list-link {
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    color: $textSheer;
+    padding: 8px 9px 8px 16px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  &__list-link:hover,
+  &__list-link:focus,
+  &__list-link:active {
+    outline: none;
+    border-color: $menuBorder;
+  }
+
+  @media (min-width: 768px) {
+    &:before,
+    &:after {
+      width: 20px;
+    }
+    &:before {
+      left: -24px;
+    }
+    &:after {
+      right: -24px;
+    }
+  }
+  @media (min-width: 1120px) {
+    &:before,
+    &:after {
+      display: none;
+    }
+    &__list {
+      overflow-x: visible;
+      flex-wrap: wrap;
+    }
+
+    &__list-item[hidden]:nth-of-type(1),
+    &__list-item[hidden]:nth-of-type(5) {
+      display: block;
+    }
+    &__list-item[hidden]:nth-of-type(3) {
+      display: none;
+    }
+  }
+}

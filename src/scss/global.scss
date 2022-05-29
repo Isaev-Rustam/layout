@@ -1,0 +1,235 @@
+ul {
+  list-style: none;
+}
+
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+*::before,
+*::after {
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+body {
+  font-family: "TT Lakes";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+  color: $text;
+  position: relative;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1440px;
+  overflow: hidden;
+
+  &__content {
+    max-width: 1120px;
+  }
+
+  @media(min-width: 1120px) {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}
+
+.container {
+  padding: 0 16px;
+  overflow: hidden;
+  @media (min-width: 768px) {
+    padding: 0 24px;
+  }
+  @media (min-width: 1120px) {
+    padding: 0 32px;
+  }
+}
+
+.title-header{
+  letter-spacing: -0.6px;
+  line-height: 40px;
+  font-weight: 700;
+  font-size: 28px;
+
+}
+
+.title {
+  line-height: 24px;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 400;
+  color: $title;
+  padding: 16px 0;
+}
+
+.btn {
+  overflow: hidden;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  filter: blur(0px);
+  transition: filter 0.3s ease-in-out;
+
+  &:hover,
+  &:focus,
+  &:active {
+    filter: blur(1px);
+  }
+}
+
+.btn-content {
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: $text;
+  padding-left: 32px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    letter-spacing: -0.2px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url("data:image/svg+xml,%3Csvg width='8' height='11' viewBox='0 0 8 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.50008 0.500076L4.00008 3.00008L1.50008 0.500076C1.22393 0.223933 0.776218 0.223933 0.500076 0.500076C0.223933 0.776218 0.223933 1.22393 0.500075 1.50008L3.29297 4.29297C3.68349 4.68349 4.31666 4.68349 4.70718 4.29297L7.50008 1.50008C7.77622 1.22393 7.77622 0.776218 7.50008 0.500076C7.22393 0.223933 6.77622 0.223933 6.50008 0.500076ZM6.50008 6.50008L4.00008 9.00008L1.50008 6.50008C1.22393 6.22393 0.776218 6.22393 0.500076 6.50008C0.223933 6.77622 0.223933 7.22393 0.500075 7.50008L3.29297 10.293C3.68349 10.6835 4.31666 10.6835 4.70718 10.293L7.50008 7.50008C7.77622 7.22393 7.77622 6.77622 7.50008 6.50008C7.22393 6.22393 6.77622 6.22393 6.50008 6.50008Z' fill='%2341F6D7'/%3E%3C/svg%3E%0A") no-repeat 50% 50% / auto auto;
+  }
+}
+
+.btn-content--active {
+  &::before {
+    transform: rotate(180deg);
+  }
+}
+
+.btn-link {
+  padding: 4px 8px 4px 12px;
+  background: $buttonBg;
+  border: none;
+  border-radius: 16px;
+  color: #FFFFFF;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+  transition: background-color .5s;
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    background-color: #2580C9FF;
+  }
+
+  &:after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    right: 8px;
+    vertical-align: middle;
+    background: url("data:image/svg+xml,%3Csvg width='7' height='10' viewBox='0 0 7 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.8 5L0.791554 2.22906C0.3641 1.83535 0.361125 1.16145 0.785088 0.76398L0.920293 0.637225C1.30321 0.278241 1.89851 0.276397 2.28364 0.633002L6.93812 4.94271C6.9715 4.97361 6.9715 5.02639 6.93812 5.05729L2.34674 9.30857C1.92606 9.69809 1.27582 9.69608 0.857554 9.30396V9.30396C0.394458 8.8698 0.397706 8.13369 0.864616 7.70364L3.8 5Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat 50% 50% / auto auto;
+  }
+}
+
+.blur-slide {
+  &:before,
+  &:after {
+    content: "";
+    width: 24px;
+    position: absolute;
+  }
+
+  &:before {
+    background: linear-gradient(
+        90deg,
+        #f8f8f8 16.84%,
+        rgba(248, 248, 248, 0.0001) 100%
+    );
+  }
+
+  &:after {
+    background: linear-gradient(
+        270deg,
+        #f8f8f8 16.84%,
+        rgba(248, 248, 248, 0.0001) 100%
+    );
+  }
+}
+
+.dividing-line::before {
+  width: 2px;
+  height: 32px;
+  background-color: $dividingLine;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+.link-btn {
+  &::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    transition: all 0.4s ease-in;
+    border: 2px solid #FF3E79;
+    border-radius: 50%;
+    background: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.5 6L0.707106 2.20711C0.316582 1.81658 0.316582 1.18342 0.707107 0.792893L0.792893 0.707107C1.18342 0.316583 1.81658 0.316583 2.20711 0.707107L6.79289 5.29289C7.18342 5.68342 7.18342 6.31658 6.79289 6.70711L2.20711 11.2929C1.81658 11.6834 1.18342 11.6834 0.792893 11.2929L0.707107 11.2071C0.316583 10.8166 0.316583 10.1834 0.707107 9.79289L4.5 6Z' fill='%23FF3E79'/%3E%3C/svg%3E%0A") no-repeat 50% 50% / auto auto;
+  }
+
+  &:hover::after,
+  &:focus::after,
+  &:active::after {
+    border-color: #F49300;
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.5 6L0.707106 2.20711C0.316582 1.81658 0.316582 1.18342 0.707107 0.792893L0.792893 0.707107C1.18342 0.316583 1.81658 0.316583 2.20711 0.707107L6.79289 5.29289C7.18342 5.68342 7.18342 6.31658 6.79289 6.70711L2.20711 11.2929C1.81658 11.6834 1.18342 11.6834 0.792893 11.2929L0.707107 11.2071C0.316583 10.8166 0.316583 10.1834 0.707107 9.79289L4.5 6Z' fill='%23F49300'/%3E%3C/svg%3E%0A");
+  }
+}
+
+.line-active::before {
+  position: absolute;
+  width: 4px;
+  top: 0;
+  bottom: 0;
+  background: $bgLine;
+  border-radius: 0 4px 4px 0;
+  left: -16px;
+  @media (min-width: 768px) {
+    left: -24px;
+  }
+  @media (min-width: 1120px) {
+    left: -34px;
+  }
+}
+
+.logo-img {
+  vertical-align: middle;
+}
