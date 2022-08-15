@@ -1,98 +1,108 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-
-//Модуль gh-pages Размещает  папку Dist на git hub
 
 module.exports = {
-  // Входной файл
-  entry: ["./src/js/index.js"],
 
-  // Выходной файл И очистка выходной папки
+  devServer: {
+    open: true,
+    hot: true,
+    port: 8080,
+    static: {
+      directory: './src',
+      watch: true
+    }
+  },
+
+  // entry: "./src/js/index.js",
+  entry: ["@babel/polyfill", "./src/js/index.js"],
+
   output: {
-    filename: "./js/bundle.js",
+    filename: '[name].[contenthash].js',
+    assetModuleFilename: "assets/[hash][ext][query]",
     clean: true,
   },
 
-  // Source maps для удобства отладки
-  devtool: "source-map",
+  devtool: 'source-map',
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 
   module: {
     rules: [
-      // Транспилируем js с babel
+
+      // изображения
       {
-        test: /\.js$/,
-        include: path.resolve(__dirname, "src/js"),
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+
+      // изображения из html
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
+
+      // шрифты
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "postcss-preset-env",
+                    {
+                      // Options
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+          "sass-loader",
+        ],
+      },
+
+      // js
+      {
+        test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"],
-          },
-        },
-      },
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
 
-      // Компилируем SCSS в CSS
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader, // Extract css to separate file
-          "css-loader", // translates CSS into CommonJS
-          {
-            loader: "postcss-loader", // parse CSS and add vendor prefixes to CSS rules
-            options: {
-              postcssOptions: {
-                plugins: [["autoprefixer"]],
-              },
-            },
-          },
-          "sass-loader", // compiles Sass to CSS, using Node Sass by default
-        ],
-      },
-
-      // Подключаем шрифты из css
-      {
-        test: /\.(eot|ttf|woff|woff2)$/,
-        use: [
-          {
-            loader: "file-loader?name=./fonts/[name].[ext]",
-          },
-        ],
-      },
-
-      // Подключаем картинки из css
-      {
-        test: /\.(svg|png|jpg|jpeg|webp)$/,
-        use: [
-          {
-            loader: "file-loader?name=./static/[name].[ext]",
-          },
-        ],
-      },
     ],
   },
+
+
   plugins: [
+
     // Подключаем файл html, стили и скрипты встроятся автоматически
     new HtmlWebpackPlugin({
-      title: "CPS",
-      template: "./src/index.html",
-      inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: false,
-      },
+      template: path.resolve(__dirname, './src/index.html'),
     }),
 
-    // Кладем стили в отдельный файлик
     new MiniCssExtractPlugin({
-      filename: "style.css",
-    }),
-
-    // Копируем картинки
-
-    new CopyWebpackPlugin({
-      patterns: [{ from: "./src/img", to: "img" }],
+      filename: '[name].[contenthash].css'
     }),
   ],
+
 };
+
